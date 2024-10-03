@@ -16,6 +16,9 @@
             "outputPath": "dist/be-grid",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "allowedCommonJsDependencies": [
+              "xlsx"
+            ],
             "polyfills": [
               "zone.js"
             ],

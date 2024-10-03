@@ -20,9 +20,9 @@ export class ButtonComponent {
     rowData: any;
 
     @Output()
-    btnClicked: EventEmitter<any> = new EventEmitter<any>();
+    btnClick: EventEmitter<any> = new EventEmitter<any>();
 
     actionClick(action?: string) {
-      this.btnClicked.emit({row: this.rowData, action: action})
+      this.btnClick.emit({row: this.rowData, action: action})
     }
 }
