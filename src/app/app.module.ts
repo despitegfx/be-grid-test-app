@@ -18,6 +18,7 @@ import {CdkDropList, CdkDrag, DragDropModule} from '@angular/cdk/drag-drop';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 // import {MatTableExporterModule} from "mat-table-exporter";
 import {BeButtonComponent, BeGridModule} from "be-grid";
+import {MatTableExporterModule} from "mat-table-exporter";
 
 
 @NgModule({
@@ -39,11 +40,9 @@ import {BeButtonComponent, BeGridModule} from "be-grid";
     MatIconModule,
     MatSortModule,
     MatPaginatorModule,
-    CdkDropList,
-    CdkDrag,
     DragDropModule,
     BeGridModule,
-    // MatTableExporterModule,
+    MatTableExporterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

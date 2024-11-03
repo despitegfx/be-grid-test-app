@@ -45,10 +45,16 @@ export class GridComponent implements OnInit, AfterViewInit{
   pageSizeOptions: number[] = [];
 
   @Input()
+  toggleExport?: boolean = false
+
+  @Input()
   xColumnsExport?: number[] = []
 
   @Input()
   exportFileName?: string = "table-export"
+
+  @Input()
+  multiRowSelect?: boolean = false
 
 //emit events
   @Output()
@@ -84,7 +90,9 @@ export class GridComponent implements OnInit, AfterViewInit{
     this.xColumnsExport = [5]
     this.tableRowData.data = this.rowData
     this.displayedColumns = this.defColumns.map(cols => cols.name);
-    this.additionalColumns = Object.keys({...this.rowData}[0])
+    if(this.rowData.length > 0) {
+      this.additionalColumns = Object.keys({...this.rowData}[0])
+    }
    }
 
   // column reassign sorted data
@@ -154,8 +162,12 @@ export class GridComponent implements OnInit, AfterViewInit{
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  onRowSelection() {
-    this.rowSelection.emit({selectedRows: this.selection.selected})
+  onRowSelection(selectedRow?: any, singleRow?: boolean) {
+    if (singleRow && !this.multiRowSelect){
+      this.rowSelection.emit({selectedRows: [selectedRow]});
+    }else {
+      this.rowSelection.emit({selectedRows: this.selection.selected});
+    }
     //on row selection, hide context menu
     this.hideContextMenu()
   }

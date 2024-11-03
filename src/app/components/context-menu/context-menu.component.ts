@@ -9,7 +9,7 @@ import {ContextMenuService} from "./context-menu.service";
 export class ContextMenuComponent {
   @Input() x=0;
   @Input() y=0;
-  @Input() toggleExport: boolean = true;
+  @Input() toggleExport?: boolean = true;
 
   @Output() excelExport: EventEmitter<any> = new EventEmitter<any>()
   @Output() csvExport: EventEmitter<any> = new EventEmitter<any>()
